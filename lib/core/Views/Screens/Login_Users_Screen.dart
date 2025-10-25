@@ -58,11 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: double.infinity,
                       width: double.infinity,
                       decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [AppColors.background],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
+                          color:AppColors.primary
                       ),
                     ),
                     Align(
@@ -98,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 const Text(
-                                  "سجّل دخولك في HandyHub",
+                                  "سجّل دخولك في FixiFy",
                                   style: TextStyle(
                                       fontSize: 16,
                                       color: Color(0xFF2e5d5c),
@@ -110,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   hintText: 'البريد الإلكتروني',
                                   prefixIcon: Icons.email,
                                   keyboardType: TextInputType.emailAddress,
+                                  borderSide: BorderSide(color:AppColors.primary),
                                 ),
                                 const SizedBox(height: 16),
                                 CustomPasswordField(

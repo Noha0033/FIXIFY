@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:handy_hub/core/Repository/auth_repo.dart';
-import 'package:handy_hub/core/Views/Screens/Login_Users_Screen.dart';
 import 'package:handy_hub/firebase_options.dart';
 import 'core/Repository/service_repository.dart';
 import 'core/ViewModels/Auth/Auth_cubit.dart';
 import 'core/ViewModels/onboarding/onboarding_viewmodel.dart';
 import 'core/ViewModels/serviceVM/service_cubit.dart';
+import 'core/Views/Screens/Boarding_Screen.dart';
 import 'core/Views/Screens/Onboarding/onboarding_screen1.dart';
 import 'core/Views/Screens/Splash_Screen.dart';
 import 'core/Views/Themes/app_colors.dart' show AppColors;
@@ -52,7 +52,7 @@ class Handy_Hub extends StatelessWidget {
           home: SplashScreen(
             nextScreen: showOnboarding
                 ? OnboardingScreen() // إذا شاهدت الواجهات مسبقًا → مباشرة Home
-                : LoginScreen(), logoPath: 'assets/images/Logo finaly.png',    // أول مرة → الواجهات الترحيبية
+                : BoardingScreen(), logoPath: 'assets/images/Logo finaly.png',    // أول مرة → الواجهات الترحيبية
           ),
         )
     );

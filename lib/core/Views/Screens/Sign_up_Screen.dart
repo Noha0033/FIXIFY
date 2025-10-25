@@ -6,6 +6,8 @@ import 'package:handy_hub/core/Views/Widgets/Custom_TextFiled.dart';
 import '../../ViewModels/Auth/Auth_cubit.dart';
 import 'package:handy_hub/core/ViewModels/Auth/Auth_state.dart';
 
+import '../Themes/app_colors.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -48,11 +50,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 // الخلفية
                     Container(
                       decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [Color(0xFF00897B), Color(0xFF2EB66A)],
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                        ),
+                       color: AppColors.primary
                       ),
                     ),
 
@@ -91,7 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                                 const SizedBox(height: 8),
                                 const Text(
-                                  "انضم إلى HandyHub وابدأ استخدام خدماتنا بسهولة",
+                                  "انضم إلى FixiFy وابدأ استخدام خدماتنا بسهولة",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(fontSize: 15, color: Colors.black54),
                                 ),
@@ -102,6 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   controller: nameController,
                                   hintText: "الاسم الكامل",
                                   prefixIcon: Icons.person_outline,
+                                  borderSide: BorderSide(color:AppColors.primary),
                                 ),
                                 const SizedBox(height: 16),
 
@@ -111,6 +110,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   hintText: 'البريد الإلكتروني',
                                   prefixIcon: Icons.email,
                                   keyboardType: TextInputType.emailAddress,
+                                  borderSide: BorderSide(color:AppColors.primary),
                                 ),
                                 const SizedBox(height: 16),
 
@@ -137,6 +137,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   hintText: 'رقم الهاتف',
                                   prefixIcon: Icons.phone,
                                   keyboardType: TextInputType.phone,
+                                  borderSide: BorderSide(color:AppColors.primary),
                                 ),
                                 const SizedBox(height: 24),
 

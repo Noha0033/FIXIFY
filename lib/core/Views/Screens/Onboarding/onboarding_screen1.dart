@@ -60,7 +60,7 @@ class OnboardingScreen extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Column(
                             children: [
-                              OnboardingImage(imagePath: page.imagePath),
+                              Images(imagePath: page.imagePath),
                               OnboardingTexts(
                                 title: page.title,
                                 description: page.description,

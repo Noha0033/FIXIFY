@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:handy_hub/core/Views/Themes/app_colors.dart';
 
 // حقل نص عادي
 class CustomTextField extends StatelessWidget {
@@ -6,6 +7,7 @@ class CustomTextField extends StatelessWidget {
   final String hintText;
   final IconData prefixIcon;
   final TextInputType keyboardType;
+  final BorderSide borderSide;
 
   const CustomTextField({
     super.key,
@@ -13,6 +15,7 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     required this.prefixIcon,
     this.keyboardType = TextInputType.text,
+    required this.borderSide,
   });
 
   @override
@@ -25,7 +28,7 @@ class CustomTextField extends StatelessWidget {
         hintText: hintText,
         filled: true,
         fillColor: const Color(0xFFF5F7F8),
-        prefixIcon: Icon(prefixIcon, color: Colors.teal),
+        prefixIcon: Icon(prefixIcon, color: AppColors.primary),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(25),
           borderSide: BorderSide.none,
@@ -72,11 +75,11 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
         hintText: widget.hintText,
         filled: true,
         fillColor: const Color(0xFFF5F7F8),
-        prefixIcon: Icon(widget.prefixIcon, color: Colors.teal),
+        prefixIcon: Icon(widget.prefixIcon, color: AppColors.primary),
         suffixIcon: IconButton(
           icon: Icon(
             obscureText ? Icons.visibility : Icons.visibility_off,
-            color: const Color(0xFF1b3837),
+            color: AppColors.primary,
           ),
           onPressed: () {
             setState(() {
@@ -115,22 +118,24 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 55,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.teal,
+          backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color:AppColors.primary, ),
+
           ),
           elevation: 5,
         ),
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: AppColors.background,
           ),
         ),
       ),
@@ -146,7 +151,7 @@ class GoogleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 55,
       child: OutlinedButton.icon(
         onPressed: onPressed,
         icon: Image.asset(
@@ -157,15 +162,15 @@ class GoogleButton extends StatelessWidget {
         label: const Text(
           "تسجيل الدخول بواسطة Google",
           style: TextStyle(
-            color: Colors.black87,
+            color:AppColors.primary,
             fontWeight: FontWeight.w600,
           ),
         ),
         style: OutlinedButton.styleFrom(
-          side: const BorderSide(color: Colors.grey),
+          side: const BorderSide(color:AppColors.primary,),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
-          ),
+            borderRadius: BorderRadius.circular(12),
+            side: BorderSide(color:AppColors.primary, ),          ),
         ),
       ),
     );
@@ -184,7 +189,7 @@ class LinkText extends StatelessWidget {
       child: Text(
         text,
         style: const TextStyle(
-          color: Colors.teal,
+          color: AppColors.primary,
           fontWeight: FontWeight.bold,
         ),
       ),

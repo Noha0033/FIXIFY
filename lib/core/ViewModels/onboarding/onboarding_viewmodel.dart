@@ -27,6 +27,6 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   void completeOnboarding(BuildContext context) {
     AppStorage.setOnboardingShown();
-    Navigator.pushReplacementNamed(context, '/home');
+    Navigator.pushReplacementNamed(context, '/BoardingScreen');
   }
 }
