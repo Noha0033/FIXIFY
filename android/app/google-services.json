@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "670694094031",
+    "project_id": "handy-hub-5e0eb",
+    "storage_bucket": "handy-hub-5e0eb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670694094031:android:3bb2aa30368bbd540673ba",
+        "android_client_info": {
+          "package_name": "com.example.handy_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670694094031-8a2gu3lg42h51iqdlneq9tkhulfjbbel.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.handy_hub",
+            "certificate_hash": "ac8a862c683b9953e54de6aca18bfb450f57f89e"
+          }
+        },
+        {
+          "client_id": "670694094031-i39vj8sg86q0v620940ccivbtv19sic8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCs5072-7YJ8Q-Z7z0CiaVIr8sPXvmidQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670694094031-el5rnlo2g8pe4q8bnapfu3h7b2dp30fh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "670694094031-sor1e18ddnppv8poof3buumthvg0q3mu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.handyHub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
