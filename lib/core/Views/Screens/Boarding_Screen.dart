@@ -5,6 +5,7 @@ import 'package:handy_hub/core/Views/Themes/app_colors.dart';
 
 import '../Widgets/Custom_TextFiled.dart';
 import 'AddWorkerScreen.dart';
+import 'RegisterScreen.dart';
 
 
 class BoardingScreen extends StatelessWidget {
@@ -21,7 +22,7 @@ class BoardingScreen extends StatelessWidget {
             children: [
               SizedBox(
                 child: SizedBox(
-                  height: 200,
+                  height: 150,
                   width: 250,
                 ),
               ),
@@ -29,7 +30,7 @@ class BoardingScreen extends StatelessWidget {
               SizedBox(height: 20,),
               Text("خدمات حرفية موثوقة وسريعة لمنزلك",style: TextStyle(fontSize: 16,color: AppColors.text,fontWeight: FontWeight.bold),),
               SizedBox(
-                height: 300,
+                height: 250,
                 width: 250,
               ),
               CustomButton(
@@ -38,7 +39,7 @@ class BoardingScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (_) => const HomeScreen()),
-                  );                }, text: "ابحث عن عامل",
+                  );                }, text: "الدخول كزائر",
               ),
               SizedBox(height: 14,),
               CustomButton(
@@ -46,9 +47,34 @@ class BoardingScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) => const AddWorkerScreen()),
-                  );                }, text: "أنا عامل",
-              )
+                        builder: (_) => const LoginScreen()),
+                  );                }, text: "تسجيل الدخول",
+              ),
+              SizedBox(height: 14,),
+              Divider(
+                thickness: 1.0,          // حجم الخط
+                color: Colors.grey[300],       // اللون
+                indent: 4,                // المسافة من اليسار
+                endIndent: 4,             // المسافة من اليمين
+              ),
+              SizedBox(height: 14),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  LinkText(
+                    text: "إنشاء حساب ",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => const SignUpScreen()),
+                      );
+                    },
+                  ),
+                  const Text("ليس لديك حساب؟ "),
+
+                ],
+              ),
             ],
           ),
         ),

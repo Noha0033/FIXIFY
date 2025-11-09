@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 
-/// شاشة البداية (Splash Screen)
-/// تظهر الشعار مع حركة تكبير تدريجية وتنتقل تلقائيًا إلى الشاشة التالية.
+import 'Login_Users_Screen.dart';
+import 'Onboarding/onboarding_screen1.dart';
+import 'home_screen.dart';
+
 class SplashScreen extends StatefulWidget {
-  final Widget nextScreen;
   final String logoPath;
   final Duration duration;
   final Color backgroundColor;
 
   const SplashScreen({
     Key? key,
-    required this.nextScreen,
     required this.logoPath,
-    this.duration = const Duration(seconds: 5),
-    this.backgroundColor = Colors.white,
+    this.duration = const Duration(seconds: 3),
+    this.backgroundColor = Colors.white, required nextScreen,
   }) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-/// الحالة الخاصة بـ SplashScreen
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
   late final Animation<double> _scaleAnimation;
   late final Animation<double> _fadeAnimation;
+
+  final _storage = GetStorage();
 
   @override
   void initState() {
@@ -34,7 +36,6 @@ class _SplashScreenState extends State<SplashScreen>
     _navigateAfterDelay();
   }
 
-  /// تهيئة الأنميشن (تكبير + تلاشي تدريجي)
   void _initializeAnimations() {
     _controller = AnimationController(
       vsync: this,
@@ -52,14 +53,30 @@ class _SplashScreenState extends State<SplashScreen>
     _controller.forward();
   }
 
-  /// الانتقال بعد انتهاء المدة المحددة
-  void _navigateAfterDelay() {
-    Future.delayed(widget.duration, () {
-      if (!mounted) return;
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => widget.nextScreen),
-      );
-    });
+  /// الانتقال بعد انتهاء المدة المحددة مع التحقق من حالة Onboarding و Login
+  Future<void> _navigateAfterDelay() async {
+    await Future.delayed(widget.duration);
+
+    if (!mounted) return;
+
+    // التحقق من شاشة الترحيب
+    final isOnboardingShown = _storage.read('isOnboardingShown') ?? false;
+    // التحقق من تسجيل الدخول
+    final isLoggedIn = _storage.read('isLoggedIn') ?? false;
+
+    Widget nextScreen;
+
+    if (!isOnboardingShown) {
+      nextScreen = OnboardingScreen();
+    } else if (!isLoggedIn) {
+      nextScreen = LoginScreen();
+    } else {
+      nextScreen = HomeScreen();
+    }
+
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(builder: (_) => nextScreen),
+    );
   }
 
   @override
@@ -68,7 +85,6 @@ class _SplashScreenState extends State<SplashScreen>
     super.dispose();
   }
 
-  /// بناء واجهة المستخدم
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,18 +101,12 @@ class _SplashScreenState extends State<SplashScreen>
               ),
             );
           },
-          child: _buildLogo(),
+          child: Image.asset(
+            widget.logoPath,
+            height: 270,
+          ),
         ),
       ),
-    );
-  }
-
-  /// ودجت الشعار (منفصلة لسهولة التعديل)
-  Widget _buildLogo() {
-    return Image.asset(
-      widget.logoPath,
-      height: 270,
-
     );
   }
 }

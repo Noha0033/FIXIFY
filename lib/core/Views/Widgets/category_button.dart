@@ -29,13 +29,15 @@ class CategoryButton extends StatelessWidget {
         children: [
           Image.asset(category.iconPath, width: 40, height: 40),
           const SizedBox(height: 7),
-          Text(
-            category.title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 13,
-              color: AppColors.textDark,
-              fontWeight: FontWeight.w500,
+          Expanded(
+            child: Text(
+              category.title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 13,
+                color: AppColors.textDark,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
 

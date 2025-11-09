@@ -8,6 +8,8 @@ class CustomTextField extends StatelessWidget {
   final IconData prefixIcon;
   final TextInputType keyboardType;
   final BorderSide borderSide;
+  final int? exactLength; // <-- أضفنا هذا للرقم المحدد
+  final bool isRequired;
 
   const CustomTextField({
     super.key,
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
     required this.prefixIcon,
     this.keyboardType = TextInputType.text,
     required this.borderSide,
+    this.exactLength,
+    this.isRequired = true,
   });
 
   @override
@@ -35,9 +39,14 @@ class CustomTextField extends StatelessWidget {
         ),
       ),
       validator: (value) {
-        if (value == null || value.isEmpty) {
+        if (isRequired && (value == null || value.isEmpty)) {
           return 'يرجى إدخال $hintText';
         }
+
+        if (exactLength != null && value != null && value.length != exactLength) {
+          return 'يجب أن يكون $hintText مكونًا من $exactLength أرقام';
+        }
+
         return null;
       },
     );

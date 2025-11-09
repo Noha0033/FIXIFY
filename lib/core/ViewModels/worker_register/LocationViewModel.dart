@@ -1,4 +1,4 @@
-import 'Location_google/LocationCubit.dart';
+import '../Location_google/LocationCubit.dart';
 
 class MapViewModel {
   final LocationCubit cubit;

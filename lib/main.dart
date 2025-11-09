@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:handy_hub/core/Repository/auth_repo.dart';
+import 'package:handy_hub/core/ViewModels/SearchCubit/SearchCubitVM.dart';
 import 'package:handy_hub/firebase_options.dart';
-import 'core/Repository/service_repository.dart';
+import 'core/Repository/LocationService.dart';
 import 'core/ViewModels/Auth/Auth_cubit.dart';
+import 'core/ViewModels/Location_google/LocationCubit.dart';
 import 'core/ViewModels/onboarding/onboarding_viewmodel.dart';
-import 'core/ViewModels/serviceVM/service_cubit.dart';
 import 'core/Views/Screens/Boarding_Screen.dart';
+import 'core/Views/Screens/Home_Screen.dart';
 import 'core/Views/Screens/Onboarding/onboarding_screen1.dart';
 import 'core/Views/Screens/Splash_Screen.dart';
 import 'core/Views/Themes/app_colors.dart' show AppColors;
@@ -36,7 +38,11 @@ class Handy_Hub extends StatelessWidget {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (ctx)=>AuthCubit(authRepository)),
       BlocProvider(create: (ctx)=>OnboardingCubit()),
-      BlocProvider(create: (_) => ServiceCubit(ServiceRepository())..fetchServices()),
+      BlocProvider(create: (ctx)=>SearchCubit()),
+      BlocProvider(
+        create: (_) => LocationCubit(LocationService()),
+      ),
+
 
 
     ],
@@ -51,9 +57,11 @@ class Handy_Hub extends StatelessWidget {
           onGenerateRoute: RouteManager.generateRoutes,
           home: SplashScreen(
             nextScreen: showOnboarding
-                ? OnboardingScreen() // إذا شاهدت الواجهات مسبقًا → مباشرة Home
-                : BoardingScreen(), logoPath: 'assets/images/Logo finaly.png',    // أول مرة → الواجهات الترحيبية
+                ? HomeScreen()          // إذا شاهد الواجهات من قبل → مباشرة إلى الصفحة الرئيسية
+                : OnboardingScreen(),   // أول مرة → يعرض شاشة الترحيب
+            logoPath: 'assets/images/Logo finaly.png',
           ),
+
         )
     );
   }
