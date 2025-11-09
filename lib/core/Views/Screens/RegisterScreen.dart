@@ -49,6 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
 // الخلفية
                     Container(
+
                       decoration: const BoxDecoration(
                        color: AppColors.primary
                       ),
@@ -60,8 +61,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: SingleChildScrollView(
                         child: Container(
                           padding: const EdgeInsets.all(24),
+
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: AppColors.background,
                             borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(30),
                               topRight: Radius.circular(30),
@@ -84,14 +86,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   style: TextStyle(
                                     fontSize: 26,
                                     fontWeight: FontWeight.bold,
-                                    color: Color(0xFF1b3837),
+                                    color: AppColors.textDark,
                                   ),
                                 ),
                                 const SizedBox(height: 8),
                                 const Text(
                                   "انضم إلى FixiFy وابدأ استخدام خدماتنا بسهولة",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(fontSize: 15, color: Colors.black54),
+                                  style: TextStyle(fontSize: 15, color: AppColors.textLight),
                                 ),
                                 const SizedBox(height: 24),
 
@@ -99,7 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 CustomTextField(
                                   controller: nameController,
                                   hintText: "الاسم الكامل",
-                                  prefixIcon: Icons.person_outline,
+                                  prefixIcon: Icons.person,
                                   borderSide: BorderSide(color:AppColors.primary),
                                 ),
                                 const SizedBox(height: 16),
@@ -126,7 +128,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 CustomPasswordField(
                                   controller: confirmPasswordController,
                                   hintText: 'تأكيد كلمة المرور',
-                                  prefixIcon: Icons.lock_outline,
+                                  prefixIcon: Icons.lock,
                                   confirmWith: passwordController,
                                 ),
                                 const SizedBox(height: 16),
